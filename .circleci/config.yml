@@ -40,7 +40,7 @@ jobs:
           paths: assets
 
 workflows:
-  build_and_verify:
+  build_and_test:
     jobs:
       - build:
           pre-steps:
@@ -53,6 +53,6 @@ workflows:
           filters:
             branches:
               ignore: test-branch
-      - verify:
+      - test:
           requires:
             - builld
