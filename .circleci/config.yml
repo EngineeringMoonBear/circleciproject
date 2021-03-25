@@ -12,7 +12,7 @@ jobs:
     steps:
       - add_ssh_keys
       - run: node << pipeline.parameters.version-param >>
-      - npm install
+      - install-npm:
       - run: yarn --version
       - store_artifacts:
           path: test-results
