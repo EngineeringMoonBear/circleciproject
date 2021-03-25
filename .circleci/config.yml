@@ -40,7 +40,7 @@ jobs:
           paths: assets
 
 workflows:
-  build-and-verify:
+  build_and_verify:
     jobs:
       - build:
           pre-steps:
