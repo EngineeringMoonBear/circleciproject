@@ -12,9 +12,7 @@ jobs:
     steps:
       - add_ssh_keys
       - run: node << pipeline.parameters.version-param >>
-      - checkout
-      - node/install:
-         install-yarn: true
+      - npm install
       - run: yarn --version
       - store_artifacts:
           path: test-results
@@ -42,7 +40,7 @@ jobs:
           paths: assets
 
 workflows:
-  build_and_test:
+  build-and-verify:
     jobs:
       - build:
           pre-steps:
@@ -55,6 +53,6 @@ workflows:
           filters:
             branches:
               ignore: test-branch
-      - test:
+      - verify:
           requires:
             - builld
