@@ -8,11 +8,10 @@ jobs:
   build:
     docker: 
       - image: cimg/node
-    steps:
+    steps: 
       - add_ssh_keys
       - run: node << pipeline.parameters.version-param >>
-      - node/install:
-        install-yarn: true
+      - run: node install
       - run: yarn --version
       - store_artifacts:
           path: test-results
@@ -55,4 +54,4 @@ workflows:
               ignore: test-branch
       - verify:
           requires:
-            - builld
+            - build
